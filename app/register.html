@@ -1,0 +1,33 @@
+<div class="auth-shell">
+  <form class="auth-card" id="register-form">
+    <div class="brand">
+      <div class="brand-dot"></div>
+      <div class="brand-name">Rick & Morty System</div>
+    </div>
+    <h1>Crear cuenta</h1>
+    <p class="subtitle">Regístrate para comenzar tu aventura interdimensional.</p>
+    
+    <label class="field">
+      <span>Nombre</span>
+      <input type="text" id="reg-name" required />
+    </label>
+    
+    <label class="field">
+      <span>Correo</span>
+      <input type="email" id="reg-email" required />
+    </label>
+    
+    <label class="field">
+      <span>Contraseña</span>
+      <input type="password" id="reg-pass" required minlength="4" />
+    </label>
+    
+    <div class="error" id="reg-error"></div>
+    <button class="btn block" type="submit">Registrarme</button>
+    
+    <div class="auth-links">
+      <a href="#/login">Ya tengo cuenta</a>
+      <span></span>
+    </div>
+  </form>
+</div>
