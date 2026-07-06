@@ -534,3 +534,15 @@ dl.info dd {
   background: var(--border);
   border-radius: 8px;
 }
+/* Color negro para los inputs de edición en modo oscuro */
+[data-theme="dark"] .info input {
+  background-color: #000000;
+  color: #ffffff;            /* Texto blanco para que contraste con el fondo negro */
+  border: 1px solid #333333; /* Un borde sutil para que no se pierda en el fondo */
+}
+
+/* Opcional: Cambiar el color del borde cuando el usuario hace clic (focus) */
+[data-theme="dark"] .info input:focus {
+  border-color: var(--primary); 
+  outline: none;
+}

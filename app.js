@@ -182,7 +182,8 @@ window.addEventListener("offline", () => toast("Sin conexión — modo offline")
 /* ---------- pantallas auth ---------- */
 async function renderLogin() {
   const app = $("#app");
-  app.innerHTML = await fetchText("/app/login.html");
+  // CAMBIO: Quitamos la barra "/" inicial para que sea una ruta relativa
+  app.innerHTML = await fetchText("login.html"); 
   const form = $("#login-form", app);
   
   form.addEventListener("submit", (e) => {
@@ -201,7 +202,7 @@ async function renderLogin() {
 
 async function renderRegister() {
   const app = $("#app");
-  app.innerHTML = await fetchText("/app/register.html");
+  app.innerHTML = await fetchText("register.html");
   const form = $("#register-form", app);
 
   form.addEventListener("submit", (e) => {
@@ -223,7 +224,7 @@ async function renderRegister() {
 
 async function renderForgot() {
   const app = $("#app");
-  app.innerHTML = await fetchText("/app/forgot.html");
+  app.innerHTML = await fetchText("forgot.html");
   const form = $("#forgot-form", app);
 
   form.addEventListener("submit", (e) => {
@@ -247,7 +248,7 @@ async function appShell(title, content) {
   const user = currentUser();
   const { path } = currentPath();
 
-  app.innerHTML = await fetchText("/app/shell.html");
+  app.innerHTML = await fetchText("shell.html");
 
   if (path === "/characters" || path === "/character") $("#nav-chars", app).classList.add("active");
   if (path === "/episodes" || path === "/episode") $("#nav-eps", app).classList.add("active");

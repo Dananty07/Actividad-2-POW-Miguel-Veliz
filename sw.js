@@ -1,13 +1,13 @@
 /* Service Worker — cache básica para modo offline */
 const CACHE = "rickmorty-v1";
 const CORE = [
-  "/app/index.html",
-  "/app/login.html",
-  "/app/register.html",
-  "/app/forgot.html",
-  "/app/shell.html",
-  "/app/styles.css",
-  "/app/app.js",
+  "/index.html",
+  "/login.html",
+  "/register.html",
+  "/forgot.html",
+  "/shell.html",
+  "/styles.css",
+  "/app.js",
 ];
 
 self.addEventListener("install", (e) => {
@@ -43,18 +43,22 @@ self.addEventListener("fetch", (e) => {
     return;
   }
 
-  // App shell: cache-first
-  if (url.pathname.startsWith("/app/")) {
+  
+ // App shell: cache-first
+  // Modificamos para validar de forma más segura las peticiones de nuestra propia app
+  if (url.origin === self.location.origin) {
     e.respondWith(
       caches.match(e.request).then((r) => {
         return r || fetch(e.request).then((resp) => {
+          if (!resp || resp.status !== 200 || resp.type !== 'basic') return resp;
+          
           const clone = resp.clone();
           caches.open(CACHE).then((c) => c.put(e.request, clone));
           return resp;
         }).catch(() => {
-          // Corrección crítica: Solo retornar index.html si es una navegación de página
+          // Si el usuario está navegando a una página interna sin conexión, entregamos el index
           if (e.request.mode === "navigate") {
-            return caches.match("/app/index.html");
+            return caches.match("/index.html");
           }
         });
       })
