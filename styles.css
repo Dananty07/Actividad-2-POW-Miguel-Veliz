@@ -35,6 +35,55 @@
   --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.5);
 }
 
+[data-theme="dark"] .auth-card .btn {
+  background: var(--primary);
+  color: var(--primary-fg);
+  border-color: transparent;
+}
+[data-theme="dark"] .auth-card .btn:hover {
+  background: var(--primary-hover);
+}
+
+#btn-theme-side,
+#btn-logout-side {
+  background: var(--surface);
+  color: var(--text);
+  border: 1px solid var(--border);
+}
+#btn-theme-side:hover,
+#btn-logout-side:hover {
+  background: var(--surface-2);
+}
+
+#btn-theme-head {
+  background: var(--surface);
+  color: var(--text);
+  border-color: var(--border);
+}
+#btn-theme-head:hover {
+  background: var(--surface-2);
+}
+
+[data-theme="dark"] #btn-theme-side,
+[data-theme="dark"] #btn-logout-side {
+  background: #14161f;
+  color: #ffffff;
+  border-color: transparent;
+}
+[data-theme="dark"] #btn-theme-side:hover,
+[data-theme="dark"] #btn-logout-side:hover {
+  background: #1f2330;
+}
+
+[data-theme="dark"] #btn-theme-head {
+  background: transparent;
+  border-color: var(--border);
+  color: var(--text);
+}
+[data-theme="dark"] #btn-theme-head:hover {
+  background: var(--surface-2);
+}
+
 * {
   box-sizing: border-box;
 }
